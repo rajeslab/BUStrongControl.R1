@@ -1,38 +1,43 @@
-Paper Reproducibility Code
+# Paper Reproducibility Code
 
 This repository contains the Python code used to reproduce the simulation figures and supplementary results for the paper.
 
-Setup
+## Setup
 
 Run all examples from the repository root:
 
+```bash
 cd /path/to/BUStrongControl
-
+```
 
 Install the required Python packages:
 
+```bash
 python3 -m pip install numpy matplotlib joblib
-
+```
 
 The examples below use the project directory as the working directory:
 
+```python
 from pathlib import Path
 
 project_dir = Path.cwd()
+```
 
+## 1. Figures 3 and S2
 
-1. Figures 3 and S2
+First generate `cms_compare_rho_0p0.json` in each of the following study directories:
 
-First generate cms_compare_rho_0p0.json in each of the following study directories (using the method of section 3.1 by changing the relevant parameters and file names):
-
+```text
 K10dg03/
 K10dg07/
 K5dg03/
 K5dg07/
-
+```
 
 Then run:
 
+```python
 import importlib
 
 tg_mod = importlib.import_module("add_twogroup_dgm_rho0")
@@ -45,10 +50,11 @@ tg_mod.N_JOBS_OVERRIDE = -1
 tg_mod.FORCE_RECOMPUTE = True
 
 tg_mod.main()
-
+```
 
 This generates:
 
+```text
 K10dg03/cms_compare_rho_0p0_twogroup_dgm_fwer.png
 K10dg03/cms_compare_rho_0p0_twogroup_dgm_power.png
 
@@ -60,14 +66,15 @@ K10dg07/cms_compare_rho_0p0_twogroup_dgm_power.png
 
 K5dg07/cms_compare_rho_0p0_twogroup_dgm_fwer.png
 K5dg07/cms_compare_rho_0p0_twogroup_dgm_power.png
+```
 
+Set `FORCE_RECOMPUTE = False` to redraw the figures from existing `cms_compare_rho_0p0_twogroup_dgm.json` files without rerunning the two-group simulations.
 
-Set FORCE_RECOMPUTE = False to redraw the figures from existing cms_compare_rho_0p0_twogroup_dgm.json files without rerunning the two-group simulations.
+## 2. Computational Complexity
 
-2. Computational Complexity
+### 2.1 Figure S7
 
-2.1 Figure S7
-
+```python
 import importlib
 
 fixed_mod = importlib.import_module("run_simulation_from_thresholds")
@@ -79,19 +86,21 @@ fixed_mod.seed = 123
 fixed_mod.n_jobs = -1
 
 fixed_mod.main()
-
+```
 
 This generates:
 
+```text
 cms_compare_rho_0p0.json
 cms_compare_rho_0p0_fwer.png
 cms_compare_rho_0p0_power.png
 cms_compare_rho_0p0_time.png
 cms_compare_rho_0p0_combined.png
+```
 
+### 2.2 Figure S8
 
-2.2 Figure S8
-
+```python
 import importlib
 
 runtime_mod = importlib.import_module("benchmark_runtime_by_dimension")
@@ -107,23 +116,25 @@ runtime_mod.DATA_TARGET_POWER = 0.7
 runtime_mod.ALTERNATIVE_PROBABILITY = 0.5
 
 runtime_mod.main()
-
+```
 
 This generates:
 
+```text
 runtime_by_dimension_pimix_0p7.png
 runtime_by_dimension_pimix_0p7_fwer.png
 runtime_by_dimension_pimix_0p7_power_tpr.png
 runtime_by_dimension_pimix_0p7_combined.png
 runtime_by_dimension_pimix_0p7.json
+```
 
+## 3. Dependence
 
-3. Dependence
+### 3.1 Independent BU Under Dependence: Figures S4, S5, and S6
 
-3.1 Independent BU Under Dependence: Figures S4, S5, and S6
+#### Generate the independent-null thresholds
 
-Generate the independent-null thresholds
-
+```python
 import importlib
 import json
 import shutil
@@ -161,15 +172,17 @@ if payload["params"]["K"] != 10:
 
 shutil.copy2(source_file, destination_file)
 print("Created:", destination_file)
-
+```
 
 This creates:
 
+```text
 cms_thresholds_K10.json
+```
 
+#### Run the simulation
 
-Run the simulation
-
+```python
 import importlib
 from pathlib import Path
 from statistics import NormalDist
@@ -200,21 +213,23 @@ run_mod.seed = 123
 run_mod.n_jobs = -1
 
 run_mod.main()
+```
 
+For `rho = -0.1`, this creates:
 
-For rho = -0.1, this creates:
-
+```text
 cms_compare_rho_-0p1.json
 cms_compare_rho_-0p1_fwer.png
 cms_compare_rho_-0p1_power.png
 cms_compare_rho_-0p1_time.png
 cms_compare_rho_-0p1_combined.png
+```
 
+Copy the generated JSON file into the matching study directory before generating study-specific plots. For example, the target-power `0.3`, `K=10` result belongs in `K10dg03/`.
 
-Copy the generated JSON file into the matching study directory before generating study-specific plots. For example, the target-power 0.3, K=10 result belongs in K10dg03/.
+#### Regenerate plots from a saved JSON file
 
-Regenerate plots from a saved JSON file
-
+```python
 import importlib
 import json
 from pathlib import Path
@@ -237,37 +252,39 @@ plot_paths = sim_mod.plot_simulation_results(
 
 for path in plot_paths:
     print("Saved:", path)
-
+```
 
 The current plotting function creates:
 
+```text
 K10dg03/cms_compare_rho_-0p1_custom_fwer.png
 K10dg03/cms_compare_rho_-0p1_custom_power.png
 K10dg03/cms_compare_rho_-0p1_custom_time.png
 K10dg03/cms_compare_rho_-0p1_custom_combined.png
+```
 
-
-3.2 Adapting to Dependence: Table S1
+### 3.2 Adapting to Dependence: Table S1
 
 The reported settings are:
 
+```text
 Threshold-calibration samples: B = 200,000
 Simulation samples: N_SIM = 100,000
-
+```
 
 Run:
 
+```bash
 python3 run_configuration_table.py
+```
 
-It generates: 
-configuration_table.csv
-configuration_table.tex
+> **Note:** `run_configuration_table.py` must be present in the repository root. It is referenced by the source document but is not currently included in this directory.
 
+## 4. Figure S3
 
-4. Figure S3
+### 4.1 Generate the K=10 Improved-Hommel Thresholds
 
-4.1 Generate the K=10 Improved-Hommel Thresholds
-
+```python
 import importlib
 from pathlib import Path
 
@@ -294,15 +311,17 @@ threshold_mod.QUANTILE_METHOD = "higher"
 threshold_mod.MERGE_INTO_SOURCE = False
 
 threshold_mod.main()
-
+```
 
 This creates:
 
+```text
 improved_hommel_thresholds_K10.json
+```
 
+### 4.2 Generate Figure S3
 
-4.2 Generate Figure S3
-
+```python
 import importlib
 from pathlib import Path
 
@@ -327,11 +346,14 @@ plot_mod.OUTPUT_PREFIX = str(
 )
 
 plot_mod.main()
-
+```
 
 This generates:
 
+```text
 improved_hommel_power_gain_K10_tp_0p3.json
 improved_hommel_power_gain_K10_tp_0p3.png
 improved_hommel_power_gain_K10_tp_0p3_power.png
 improved_hommel_power_gain_K10_tp_0p3_fwer.png
+```
+
