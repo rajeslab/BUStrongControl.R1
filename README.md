@@ -26,7 +26,7 @@ project_dir = Path.cwd()
 
 ## 1. Figures 3 and S2
 
-First generate `cms_compare_rho_0p0.json` in each of the following study directories:
+First generate `cms_compare_rho_0p0.json` in each of the following study directories (using the method of section 3.1 by changing the relevant parameters and file names):
 
 ```text
 K10dg03/
@@ -278,7 +278,12 @@ Run:
 python3 run_configuration_table.py
 ```
 
-> **Note:** `run_configuration_table.py` must be present in the repository root. It is referenced by the source document but is not currently included in this directory.
+It generates:
+
+```bash
+configuration_table.csv
+configuration_table.tex
+```
 
 ## 4. Figure S3
 
