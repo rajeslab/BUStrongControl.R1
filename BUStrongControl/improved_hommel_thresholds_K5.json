@@ -1,0 +1,69 @@
+{
+  "params": {
+    "K": 5,
+    "alpha": 0.05,
+    "target_powers": [
+      0.3,
+      0.7,
+      0.95
+    ],
+    "B_threshold": 1000000,
+    "seed": 123,
+    "chunk_size": 20000,
+    "null_correlation": 0.0,
+    "quantile_method": "higher",
+    "candidate_method": "leave-one-out Hommel",
+    "gate": "score > threshold",
+    "source_threshold_file": "/Users/rajeshkarmakar/Downloads/BUStrongControl/cms_thresholds_K5.json"
+  },
+  "procedures": [
+    {
+      "name": "Improved_Hommel_bayes_tp_0p3",
+      "objective": "bayes",
+      "target_power": 0.3,
+      "theta": -1.8019473613328,
+      "threshold": 1.0381360635124601,
+      "empirical_tail_probability": 0.049999
+    },
+    {
+      "name": "Improved_Hommel_bayes_tp_0p7",
+      "objective": "bayes",
+      "target_power": 0.7,
+      "theta": -2.850748386748881,
+      "threshold": 0.5667158529206175,
+      "empirical_tail_probability": 0.049999
+    },
+    {
+      "name": "Improved_Hommel_bayes_tp_0p95",
+      "objective": "bayes",
+      "target_power": 0.95,
+      "theta": -3.9712015009923123,
+      "threshold": 0.12910200182179102,
+      "empirical_tail_probability": 0.049999
+    },
+    {
+      "name": "Improved_Hommel_pi1_tp_0p3",
+      "objective": "pi1",
+      "target_power": 0.3,
+      "theta": -1.8019473613328,
+      "threshold": 12.886627064536757,
+      "empirical_tail_probability": 0.049999
+    },
+    {
+      "name": "Improved_Hommel_pi1_tp_0p7",
+      "objective": "pi1",
+      "target_power": 0.7,
+      "theta": -2.850748386748881,
+      "threshold": 12.795004530126224,
+      "empirical_tail_probability": 0.049999
+    },
+    {
+      "name": "Improved_Hommel_pi1_tp_0p95",
+      "objective": "pi1",
+      "target_power": 0.95,
+      "theta": -3.9712015009923123,
+      "threshold": 3.7665321947992845,
+      "empirical_tail_probability": 0.049999
+    }
+  ]
+}

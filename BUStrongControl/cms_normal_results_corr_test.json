@@ -1,0 +1,71 @@
+{
+  "params": {
+    "K": 4,
+    "alpha": 0.05,
+    "target_power": 0.9,
+    "theta": -3.5229542931495454,
+    "objective": "bayes",
+    "B_threshold": 200,
+    "n_sim": 100,
+    "mu_alt": 2.5,
+    "rho": 0.3,
+    "seed": 123
+  },
+  "thresholds_t2_to_tK": [
+    2.4092462721683128,
+    0.0,
+    6.706492370771294
+  ],
+  "results": [
+    {
+      "K": 4,
+      "n_false": 0,
+      "n_true": 4,
+      "mu_alt": 2.5,
+      "rho": 0.3,
+      "FWER": 0.03,
+      "Power_any": NaN,
+      "Power_avg": NaN
+    },
+    {
+      "K": 4,
+      "n_false": 1,
+      "n_true": 3,
+      "mu_alt": 2.5,
+      "rho": 0.3,
+      "FWER": 0.05,
+      "Power_any": 0.0,
+      "Power_avg": 0.0
+    },
+    {
+      "K": 4,
+      "n_false": 2,
+      "n_true": 2,
+      "mu_alt": 2.5,
+      "rho": 0.3,
+      "FWER": 0.0,
+      "Power_any": 0.0,
+      "Power_avg": 0.0
+    },
+    {
+      "K": 4,
+      "n_false": 3,
+      "n_true": 1,
+      "mu_alt": 2.5,
+      "rho": 0.3,
+      "FWER": 0.0,
+      "Power_any": 0.0,
+      "Power_avg": 0.0
+    },
+    {
+      "K": 4,
+      "n_false": 4,
+      "n_true": 0,
+      "mu_alt": 2.5,
+      "rho": 0.3,
+      "FWER": 0.0,
+      "Power_any": 0.0,
+      "Power_avg": 0.0
+    }
+  ]
+}

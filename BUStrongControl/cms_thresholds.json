@@ -1,0 +1,99 @@
+{
+  "params": {
+    "K": 5,
+    "alpha": 0.05,
+    "procedure_target_powers": {
+      "bayes": [
+        0.3,
+        0.7,
+        0.95
+      ],
+      "pi1": [
+        0.3,
+        0.7,
+        0.95
+      ]
+    },
+    "beta_a": 0.3,
+    "alternative": "normal",
+    "null_correlation_phi": 0.0,
+    "B_threshold": 1000000,
+    "seed": 123,
+    "n_jobs": -1,
+    "chunk_size": 2000
+  },
+  "bu_procedures": [
+    {
+      "name": "BU_bayes_tp_0p3",
+      "objective": "bayes",
+      "target_power": 0.3,
+      "theta": -1.8019473613328,
+      "thresholds_t2_to_tK": [
+        9.357505601605903,
+        15.02230477053478,
+        20.629294104675164,
+        25.327372358370287
+      ]
+    },
+    {
+      "name": "BU_bayes_tp_0p7",
+      "objective": "bayes",
+      "target_power": 0.7,
+      "theta": -2.850748386748881,
+      "thresholds_t2_to_tK": [
+        5.075213108742143,
+        9.083286404246149,
+        13.180290634501658,
+        17.49583706091773
+      ]
+    },
+    {
+      "name": "BU_bayes_tp_0p95",
+      "objective": "bayes",
+      "target_power": 0.95,
+      "theta": -3.9712015009923123,
+      "thresholds_t2_to_tK": [
+        0.8996556867403509,
+        1.7975249097003132,
+        2.897422249900488,
+        4.125555037023183
+      ]
+    },
+    {
+      "name": "BU_pi1_tp_0p3",
+      "objective": "pi1",
+      "target_power": 0.3,
+      "theta": -1.8019473613328,
+      "thresholds_t2_to_tK": [
+        6.708739196946016,
+        9.043679291188703,
+        11.05441164760474,
+        12.867443738014885
+      ]
+    },
+    {
+      "name": "BU_pi1_tp_0p7",
+      "objective": "pi1",
+      "target_power": 0.7,
+      "theta": -2.850748386748881,
+      "thresholds_t2_to_tK": [
+        4.546184655681049,
+        7.304803231334596,
+        10.038490110027144,
+        12.764884620385873
+      ]
+    },
+    {
+      "name": "BU_pi1_tp_0p95",
+      "objective": "pi1",
+      "target_power": 0.95,
+      "theta": -3.9712015009923123,
+      "thresholds_t2_to_tK": [
+        0.8853605880452193,
+        1.7251013731370768,
+        2.6863087954635203,
+        3.7541997961204476
+      ]
+    }
+  ]
+}
