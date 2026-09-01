@@ -362,3 +362,18 @@ improved_hommel_power_gain_K10_tp_0p3_power.png
 improved_hommel_power_gain_K10_tp_0p3_fwer.png
 ```
 
+## 5. Generate Table 1 and Table 2
+
+Run the notebook:
+
+```bash
+cochrane_example.ipynb
+```
+
+
+This generates:
+
+```bash
+cochrane_table1_bu_mix_vs_gou.csv
+cochrane_table2_discovery_summary.csv
+```
