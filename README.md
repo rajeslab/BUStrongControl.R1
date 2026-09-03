@@ -75,7 +75,8 @@ Set `FORCE_RECOMPUTE = False` to redraw the figures from existing `cms_compare_r
 ### 2.1 Figure S7
 
 Data file used (generate it using instructions in section 3.1): 
-```cms_thresholds_K10.json
+```
+cms_thresholds_K10.json
 ```
 
 ```python
