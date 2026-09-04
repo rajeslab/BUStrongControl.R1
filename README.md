@@ -369,6 +369,51 @@ improved_hommel_power_gain_K10_tp_0p3_fwer.png
 
 ## 5. Generate Table 1 and Table 2
 
+Use the following code to merge "improved_hommel_thresholds_K5.json" into "cms_thresholds_K5.json":
+
+```bash
+import json
+from pathlib import Path
+
+PROJECT_DIR = Path.cwd()
+
+cms_file = PROJECT_DIR / "cms_thresholds_K5.json"
+improved_file = PROJECT_DIR / "improved_hommel_thresholds_K5.json"
+
+with cms_file.open("r", encoding="utf-8") as f:
+    cms_payload = json.load(f)
+
+with improved_file.open("r", encoding="utf-8") as f:
+    improved_payload = json.load(f)
+
+if int(cms_payload["params"]["K"]) != int(
+    improved_payload["params"]["K"]
+):
+    raise ValueError("K differs between the threshold files.")
+
+if float(cms_payload["params"]["alpha"]) != float(
+    improved_payload["params"]["alpha"]
+):
+    raise ValueError("Alpha differs between the threshold files.")
+
+if "procedures" not in improved_payload:
+    raise ValueError(
+        "The improved-Hommel file has no procedures section."
+    )
+
+cms_payload["improved_hommel"] = improved_payload
+
+with cms_file.open("w", encoding="utf-8") as f:
+    json.dump(cms_payload, f, indent=2)
+
+print("Updated:", cms_file)
+print("Top-level keys:", list(cms_payload))
+print(
+    "Improved-Hommel procedures:",
+    len(cms_payload["improved_hommel"]["procedures"]),
+)
+```
+
 Run the notebook:
 
 ```bash
