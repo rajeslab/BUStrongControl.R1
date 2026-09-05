@@ -455,3 +455,15 @@ Output files:
 rejection_policy_third_coordinate.png
 rejection_count_regions_gou_vs_bu.png
 ```
+
+## 7. Recovery Dataset
+
+Install ```multcomp``` package in R.
+
+Run the R-script:
+
+```bash
+recovery_dataset.R
+```
+
+Output: p-values and covariance matrix.
