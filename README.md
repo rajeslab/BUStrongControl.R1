@@ -427,3 +427,24 @@ This generates:
 cochrane_table1_bu_mix_vs_gou.csv
 cochrane_table2_discovery_summary.csv
 ```
+
+## 6. Rejection Regions: Figure 2 and Figure S9
+
+Run the notebook:
+
+```bash
+Final_Codes_grid.ipynb
+```
+
+Files needed to run this notebook (if not present, the notebook will create it):
+
+```bash
+cms_thresholds_K3.json
+```
+
+Output files:
+
+```
+rejection_policy_third_coordinate.png
+rejection_count_regions_gou_vs_bu.png
+```
