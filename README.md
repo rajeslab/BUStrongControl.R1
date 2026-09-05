@@ -369,6 +369,13 @@ improved_hommel_power_gain_K10_tp_0p3_fwer.png
 
 ## 5. Generate Table 1 and Table 2
 
+P-values of 248 outcomes (248 by 5 matrix):
+
+```text
+pvmat.csv
+pvmat.xlsx
+```
+
 Use the following code to merge "improved_hommel_thresholds_K5.json" into "cms_thresholds_K5.json":
 
 ```bash
