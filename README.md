@@ -376,7 +376,7 @@ pvmat.csv
 pvmat.xlsx
 ```
 
-Use the following code to merge "improved_hommel_thresholds_K5.json" into "cms_thresholds_K5.json":
+Use the following code to merge ```improved_hommel_thresholds_K5.json``` into ```cms_thresholds_K5.json```:
 
 ```bash
 import json
